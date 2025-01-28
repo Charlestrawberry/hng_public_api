@@ -6,11 +6,16 @@ const Port = process.env.PORT || 3000;
 
 // middleware
 app.use(cors());
-app.use(express());
+app.use(express.json());
 
 app.get("/", (req, res) => {
-  const currentDate = new Date.toISOString();
-  const response = {}
+  const currentDate = new Date().toISOString();
+  const response = {
+    email: "charlestrawb_odus@yahoo.com",
+    current_datetime: currentDate,
+    github_url: "https://github.com/charlestrawberry/hng_public_api",
+  };
+  res.status(200).json(response);
 });
 
 app.listen(Port, () => {
